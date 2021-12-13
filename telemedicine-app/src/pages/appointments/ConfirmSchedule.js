@@ -1,41 +1,69 @@
+import React from 'react';
 import './appointments.css';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
-
+import Axios from 'axios'
 import {Link, useParams} from "react-router-dom";
 
 const ConfirmSchedule = () => {
 
-const { doc, type, date, time } = useParams();
+    const { doc, type, date, time } = useParams();
 
-   return (
-       <div className='appointments'>
-            <Navbar/>
-            <div className='Appointments-container-outer'>
-            <div className='Appointments-container-inner'>
+    const userId = '61a90dbcfeeffc47cc29bb84';
 
-                <h2>{ type } Appointment Scheduled for { date }</h2>
-                <h2>at { time } with { doc }</h2>
+     const [txtLocSelect,setLocSelect] = React.useState("");
+     const [txtLocation,setLocation] = React.useState("");
 
-                <div className="buttons-container">
+    const submitAppointment = () => {
+    console.log("Patient: " + userId, "Doctor: " + doc, "Date: " + date, "Time: " + time);
+        Axios.post('https://telemedicine5a-backend.herokuapp.com/appointments/addAppointment', {
+                userUID:        userId,
+                doctorUID:      doc,
+                date:           date,
+                time:           time,
+                type:           type,
+                locationUID:    "",
+        
+        }).then((response) => {
+            console.log(response)
 
-                    <Link to={`/appointments/${doc}/${type}/${date}/${time}`}>
-                       <button type="button" class="btn btn-success">Continue</button>
-                    </Link>
+        });
+    }
 
-                    {" "}
+    const onSubmit = (event) => {
+        submitAppointment();
+    }
 
-                    <Link to={`/DoctorSearch`}>
-                       <button type="button" class="btn btn-primary">Start Over</button>
-                    </Link>
+    
 
-                </div>
-                
+    return (
+    <div className='appointments'>
+        <Navbar/>
+        <div className='Appointments-container-outer'>
+        <div className='Appointments-container-inner'>
+
+            <h2>{ type } Appointment Scheduled for { date }</h2>
+            <h2>at { time } with { doc }</h2>
+
+            <div className="buttons-container">
+
+                <Link to={'/NoAppointments'}>
+                    <button type="button" class="btn btn-success" onClick={e=>onSubmit(e)}>Continue</button>
+                </Link>
+
+                {" "}
+
+                <Link to={`/DoctorSearch`}>
+                    <button type="button" class="btn btn-primary">Start Over</button>
+                </Link>
+
             </div>
-            </div>
-            <Footer/>
-       </div>
-   )
+            
+        </div>
+        </div>
+        <Footer/>
+    </div>
+    )
 }
 
 export default ConfirmSchedule;

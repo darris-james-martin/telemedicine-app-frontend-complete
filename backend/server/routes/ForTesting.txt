@@ -1,0 +1,16 @@
+/searchActors: https://telemedicine5a-backend.herokuapp.com/users/getUserInfo/:userId
+/getPatients: https://telemedicine5a-backend.herokuapp.com/users/getPatients
+/getDoctors: https://telemedicine5a-backend.herokuapp.com/users/getDoctors
+/getpcp: https://telemedicine5a-backend.herokuapp.com/users/getPatientPcp/:userId 
+/approved doc: https://telemedicine5a-backend.herokuapp.com/users/approvedDoctors/:userId
+/addUserInfo https://telemedicine5a-backend.herokuapp.com/users/createUserProfile/:userId
+/getUserInfo https://telemedicine5a-backend.herokuapp.com/users/getUserInfo/:userId
+/getReports https://telemedicine5a-backend.herokuapp.com/reports/getReports/:userId
+
+demodoctor@gmail.com
+61b3efcd2bcc7f67eb92cf65
+password
+
+demopatient@gmail.com
+61b3eff72bcc7f67eb92dfc5
+password

@@ -4,70 +4,65 @@ import {AgGridReact} from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-balham.css'
 import '../../components/Canvas';
-import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/Navbar/Navbar';
+import Canvas from '../../components/Canvas';
 import Pdf from '../../images/Patient Report.pdf';
+import { useLocation } from 'react-router-dom'
+import ObjLink from '../../components/Objects/ObjLink';
 
 
-class ReportDisplay extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            //adding column definitions and Row Data. We will replace the RowData with a call to the server, whenever that happens. 
-            columnDefs: [
-                {headerName: 'Test', field: 'test', sortable: true},
-                {headerName: 'Value', field: 'value', sortable: true},
-                {headerName: 'Flag', field: 'flag', sortable: true},
-            ],
-            rowData: [
-                {test: 'Blood', value: 'Yep', flag: 'Good'},
-                {test: 'Brain', value: 'Nope', flag: 'Bad'},
-            ]
-        };
 
+const ReportDisplay = () => {
+    
+    // Data from Reports
+    //      Function: Convert data string from ObjLink back into an Object
+    const location = useLocation();
+    const {data} = location.state;
+    let reports = JSON.parse(data);    
+    console.log("data",data,"reports",reports.doctor, reports._id, reports.date, reports.details, reports.fileName);    
+    
+    //      Set sheet values using Data from Reports
+    const [sReportID, setReportID] = React.useState(reports._id);
+    const [sDoctor, setDoctor] = React.useState(reports.doctor);
+    const [sDetails, setDetails] = React.useState(reports.details);
+    const [sFileName, setFileName] = React.useState(reports.fileName);
+    const [dDate, setDate] = React.useState(new Date(reports.date));
+
+    console.log("_id:",sReportID,"doctor:",sDoctor,"dDate:",dDate);
+
+    //      Set page values using Data from DB            
+    const [fPDF, setPDF] = React.useState(Pdf);
+    //console.log("sDetails: ", sDetails, "dtDateTimeApt:", dtDateTimeApt,"rLocation: ",rLocation, "fPDF: ", fPDF);
+
+    //This will load PDF into a new window. 
+    const loadPDF = (event, fPDF) => {
+        //console.log("event: ", event, "fPDF: ",fPDF);
+        window.open(fPDF);
     }
+    
 
-    onResumeClick(){
-        window.open(Pdf);
-    }
-
-    render() {
-        return (
-            <div class="title"> 
-                <Navbar/>
-                <div className='page-canvas-outer'>
-                    <div className='page-canvas-inner'>
-                        <div className='canvas'>
-                            <div className='report-frame'>
-                                <h1>Result Details</h1>
-
-                                <p>This is information about the test</p>
-
-                                <h3>Open your results for your review:</h3>
-
-                                <div className="frame_button">
-                                    <button type="button" class="btn btn-primary" onClick={this.onResumeClick}>View PDF</button>
-                                </div>                                    
-                                
-
-                                <h2>General Information</h2>
-                                <p>Physician: Bob the Dob</p>
-                                <p>Address: 1234 56th place, Acworth, GA 30101</p>
-                            </div>
-                        </div>
-                    </div>
-                               
-                </div>
-                <Footer/>
-            </div>
-            
-                
-            
-            
-            
-        )
-    }
+    return (
+        <div class="title"> 
+            <Canvas>
+                <h1>Result Details</h1>
+                <p> 
+                    {sDetails} <br/>
+                    Uploaded on: {dDate.toLocaleDateString()} @ {dDate.toLocaleTimeString()}<br/>
+                </p>
+                <div>
+                    <ObjLink 
+                        doLink = "false"
+                        text = "View PDF"
+                        onClick = {e=>loadPDF(e, `${fPDF}`)}
+                        data = {reports}
+                        btnWidth = '125px'
+                    /></div>
+                <h2>General Information</h2>
+                <p>
+                    {sDoctor}<br/>           
+                </p>                
+            </Canvas>
+        </div>        
+    )  
 }
-
 
 export default ReportDisplay; 

@@ -26,6 +26,19 @@
     background: linear-gradient(45deg, cyan 35%, limegreen);
 }
 
+.appointmentContainer{
+    padding: 4%;
+    box-shadow: 0 5px 15px 5px rgb(0 0 0 / 20%);
+    place-content: center;
+    max-height: 100%;
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    overflow-y: auto;
+    scrollbar-width: none;    
+  }
+
 .button {
     background-color: #0d6efd;
     border-radius: 25px;
@@ -38,22 +51,28 @@
     height: 40px;
     float: right;
     margin-top: -11vh;
-    
+     
 }
+
+.refreshBtn {
+    background-color: transparent;
+    margin-top: -20vh;
+    color: black;
+    font-size: 30px;
+    text-align: center;
+    border: 2px;
+}
+
 
 .btnCall {
     background-color: #0d6efd;
     border-radius: 25px;
-    color: white;
-    padding: 0px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
     width: 100px;
     height: 40px;
-    float: left;
-    margin-top: -6vh;
-    margin-left: 11vw;
+    position: relative;
+    color: white;
+    top:30px;
+    font-weight: bold;
 }
 
 
@@ -76,19 +95,18 @@
 
 }
 
-.accordion {
+.accordion1 {
 
     width: calc(100% + 0px);
     border: 1px solid rgb(133, 133, 133);
     -webkit-box-shadow: 0px 13px 23px -13px rgba(0,0,0,0.5);
     margin-top: 15px;
     background-color: rgba(0,0,0, .4);
-    border-radius: 15px;
+    border-radius: 0px;
 
 }
 
-.accordion-header {
-
+.accordion1-header {
     font-weight: 600;
     font-size: 18px;
     cursor: pointer;
@@ -96,115 +114,141 @@
     align-items: center;
     justify-content: space-between;
     padding: 15px 15px;
-    background-color: transparent;
-      
+    background: #444359;
 }
 
-.accordion-container {
-
-    margin-top: 0px;
-
+.accordion1-body {
+    background-color: whitesmoke;
+    max-height: 100%;
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    gap: 1px; 
 }
 
 .subject {
-
     margin: auto;
-    display: inline-block;
     position: relative;
-   
+    color: white;
+    font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana, Tahoma;
+    display: inline-block;
 }
 
 .date {
-
-    margin-left: 0vw;
-    margin-top: -4vh;
+    margin: auto;
     position: relative;
-    
+    color: white;
+    font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana, Tahoma;
+    display: inline-block;
 }
 
 .time {
-
-    margin-left: -7vw;
-    margin-top: 2vh;
+    margin: auto;
     position: relative;
-
+    color: white;
+    font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana, Tahoma;
+    display: inline-block;
 }
 
 .doctor {
+    grid-row: 2;
+    grid-column: 1/-1;
+    /* border: solid 2px black; */
+}
 
-    margin-left: -61vw;
-    margin-top: 0vh;
-    font-weight: 600;
-    font-size: 18px;
-
+.office_name {
+    grid-row: 3;
+    grid-column: 3/-3;
+    /* border: solid 2px black; */
 }
 
 .address {
-
-    margin-left: -61vw;
-    margin-top: 0vh;
-    font-weight: 600;
-    font-size: 18px;
-
+    grid-row: 4;
+    grid-column: 3/-3;
+    /* border: solid 2px black; */
 }
 
-.textarea-container {
+.cityzip {
+    grid-row: 5;
+    grid-column: 3/-3;
+   /*  border: solid 2px black; */
+}
 
-    margin-top: -50px;
+.accord_btn_call {
+    grid-row: 3/-1;
+    grid-column: 1;
+    /* border: solid 2px black; */
+}
+.accord_btn_cancel {
+    grid-row: 3/-1;
+    grid-column: 7;
+    /* border: solid 2px black; */
+}
+.accord_btn_note {
+    grid-row: 3/-1;
+    grid-column: 8;
+    /* border: solid 2px black; */
+}
 
+.patient {    
+    /* grid-area: appointments-patient-frame; */
+    grid-row: 1;
+    grid-column: 1/-1;
+    /*border: solid 2px black;*/
 }
 
 .textarea-edit {
 
     height: 15vh;
     width: calc(58% + 2px);
-    margin-right: -26vw;
-    margin-top: -6vh;
     border-radius: 10px;
     border: 1px solid #000; 
     position: relative;
-    display: inline-block;
+    display: flex;
     margin: auto;
 
 }
 
 .doctor-notes {
-    margin-top: 2vh;
-    margin-left: 10vw;
+    margin-top: 5vh;
+    margin-left: 5vw;
     font-weight: 600;
     font-size: 18px;
-    display: inline-block;
+    display: inline;
     float: left;
     color: blue;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     position: relative;
 }
 
 .reschedule {
-    margin-top: 2vh;
+    margin-top: 5vh;
     font-weight: 600;
     font-size: 18px;
     display: inline-block;
     color: red;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     position: relative;
 }
 
 .cancel-appointment {
     
-    margin-top: 2vh;
+    margin-top: 5vh;
     margin-right: 3vw;
     float: right;
     font-weight: 600;
     font-size: 18px;
     display: inline-block;
     color: red;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     
 }
 
 .note {
-    margin-left: -18vw;
+    
     margin-top: 0vh;
     font-weight: 600;
     font-size: 18px;
@@ -217,74 +261,109 @@
   
 }
 
-@media only screen and (max-width: 1000px) {
+.btnCreateAppnt {
+    background-color: #4CAF50;
+    border-radius: 25px;
+    color: white;
+    margin-top: 2vh;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 0px;
+    width: 7vw;
+    height: 4vh;
 
-    .textarea-edit {
-        margin: auto;
-        margin-top: 15vh;
+}
+
+    .btnCreateAppnt:hover {
+        background-color: #009933;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
 
-    .note {
-        margin: auto;
-        margin-top: 4vh;
+.cancelBtn {
+    color: red;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    top:35px;
+}
+
+.notesBtn {
+    color: blue;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;  
+    top:15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.accordion__icon {
+    margin-left: auto;
+    transition: transform 0.6s ease;
+    transform: rotate(-90deg);
+}
+
+/* Style to rotate icon when state is active */
+.rotate {
+    transform: rotate(90deg);
+   
+}
+
+@media only screen and (max-width: 850px) {
+  
+    .button {
+        margin-top: 1vh;
     }
 
-    .doctor {
-        margin: auto;
-        margin-top: -11vh;
+    .refreshBtn {
+        margin-top: 1vh;
     }
 
-    .address {
-        margin: auto;
-        margin-top: -1vh;
+    .refreshLabel {
+        float:left;
     }
 
 }
 
-@media only screen and (max-width: 930px) {
-    .button {
-        float: none;
-        margin-top: 10vh;
-    }
+@media only screen and (max-width: 931px) {
+
     .accordion-container {
         display: -webkit-box;
         display: flex;
         -webkit-box-pack: justify;
-       
-    }
-
-}
-
-@media only screen and (max-width: 890px) {
-    .time {
-        margin-top: 10vh;
-        margin-left: -15vw;
-    }
-
-    .date {
-        margin-top: -10vh;
-    }
-    
-}
-
-@media only screen and (max-width: 350px) {
-    .subject {
-        margin-top: 25vh;
-        margin-left: -35vw;
-    }
-
-    .date {
-        margin-top: -30vh;
-    }
-
-    .time {
-        margin-top: -10vh;
-        margin-left: -25vw;
-    }
-
-    .sign {
-        margin-top: 35vh;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
