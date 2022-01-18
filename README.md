@@ -173,7 +173,7 @@ Here is what a small sample looked like when using PopUpWindow
 ```
 
 ## Axios Get and Post
-I wrote the standards for our team to use when calling the backend. 
+These were the standards I chose for our team to use when calling the backend. 
 
 ```js
  /***************************************************** 
