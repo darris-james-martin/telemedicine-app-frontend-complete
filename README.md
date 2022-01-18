@@ -1,43 +1,43 @@
-
+![image](https://user-images.githubusercontent.com/93277335/149855747-fc0cef08-c627-4d73-832a-1227557e0832.png)
 
 # Presentation
-Take a look at our presentation
+Here is the presentation posted to my YouTube page</br>
 https://www.youtube.com/watch?v=qIX37TGqIA4&ab_channel=frostbyte000jm
 
 ## Team
 ### Project Manager
-Evelyn Vaughn
+Evelyn Vaughn</br>
 
 ### Front-end Developers
-Steven Wallace </br>
-Nick Tibbetts </br>
-Jorge Caballero </br>
-James Martin </br>
+Steven Wallace</br>
+Nick Tibbetts</br>
+Jorge Caballero</br>
+James Martin</br>
 
 ### Back-end Developers
-Peter Doro </br>
-Khanh Ngyen </br>
-Evelyn Vaughn </br>
-James Martin </br>
+Peter Doro</br>
+Khanh Ngyen</br>
+Evelyn Vaughn</br>
+James Martin</br>
 
 
 # Problem
 A local physician is hiring our team to create a Telemedicine Application. They are looking for a web portal to communicate better with their patients. 
 
-The Portal must allow the patients to send and receive message, view reports, make appointments, and host video recordings. 
+The Portal must allow the patients to send and receive messages, view reports, make appointments, and host video chats. 
 
 
 # My Part of the Project
-I was responcible for the Reports page, the Doctor Admin Portal, and all the objects used. 
+I was responsible for the Reports page, the Doctor Admin Portal, and all of the objects used. 
 
 ## Objects
 Here is a sample of the objects created for this project
 
 ### Button
-![image](https://user-images.githubusercontent.com/93277335/149675331-99e0c469-1bce-4db2-bd0a-f83b8f5c3f57.png)
+![image](https://user-images.githubusercontent.com/93277335/149675331-99e0c469-1bce-4db2-bd0a-f83b8f5c3f57.png)</br>
 Each of these buttons would link in a new window or send to a new page
 
-### Object Link
+Object Link (for Buttons)
 ```js
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -113,7 +113,7 @@ export default ObjLink
 ```
 
 ## Popup Windows
-I realized early on everyone was creating a popup window and none of them were built the same. I created a model template that everyone could use.
+I realized early on that everyone was creating their own popup window and none of the windows were being built the same, therefore, I created a model template that everyone could use.
 
 ```js
 import React from 'react'
@@ -173,7 +173,7 @@ Here is what a small sample looked like when using PopUpWindow
 ```
 
 ## Axios Get and Post
-I wrote the standards for our team to use when calling from backend. 
+I wrote the standards for our team to use when calling the backend. 
 
 ```js
  /***************************************************** 
